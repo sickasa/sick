@@ -1,0 +1,74 @@
+index.html <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Spoofer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    color:white;
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px);
+    background-size:40px 40px;
+    opacity:.4;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    font-size:5rem;
+    text-shadow:0 0 25px rgba(255,255,255,.5);
+}
+
+p{
+    color:#aaa;
+    margin-top:20px;
+    max-width:600px;
+}
+
+button{
+    margin-top:30px;
+    padding:15px 30px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    font-size:1rem;
+}
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="hero">
+    <h1>HOSPITAL SPOOFER</h1>
+    <p>Modern futuristic landing page.</p>
+    <button>Get Started</button>
+</div>
+
+</body>
+</html>

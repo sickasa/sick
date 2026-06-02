@@ -1,4 +1,4 @@
-index.html <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,68 +6,162 @@ index.html <!DOCTYPE html>
 <title>Hospital Spoofer</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
 body{
-    background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
-    overflow:hidden;
+background:#050505;
+color:white;
+overflow:hidden;
+height:100vh;
 }
 
 .stars{
-    position:fixed;
-    inset:0;
-    background-image:
-        radial-gradient(circle, white 1px, transparent 1px);
-    background-size:40px 40px;
-    opacity:.4;
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(white 1px, transparent 1px);
+background-size:50px 50px;
+opacity:.15;
+animation: drift 60s linear infinite;
+}
+
+@keyframes drift{
+from{transform:translateY(0);}
+to{transform:translateY(-50px);}
+}
+
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+background:white;
+filter:blur(180px);
+opacity:.08;
+left:50%;
+top:40%;
+transform:translate(-50%,-50%);
+}
+
+nav{
+position:fixed;
+top:25px;
+left:50%;
+transform:translateX(-50%);
+padding:12px 24px;
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:999px;
+display:flex;
+gap:25px;
+z-index:10;
+}
+
+nav a{
+color:#bbb;
+text-decoration:none;
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
 }
 
 .hero{
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    position:relative;
-    z-index:2;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+z-index:2;
+animation: fadeUp 1s ease;
 }
 
 h1{
-    font-size:5rem;
-    text-shadow:0 0 25px rgba(255,255,255,.5);
+font-size:clamp(3rem,10vw,7rem);
+font-weight:800;
+letter-spacing:4px;
+text-shadow:0 0 40px rgba(255,255,255,.25);
 }
 
 p{
-    color:#aaa;
-    margin-top:20px;
-    max-width:600px;
+margin-top:20px;
+color:#9f9f9f;
+font-size:1.1rem;
 }
 
-button{
-    margin-top:30px;
-    padding:15px 30px;
-    border-radius:999px;
-    border:none;
-    cursor:pointer;
-    font-size:1rem;
+.buttons{
+margin-top:35px;
+display:flex;
+gap:15px;
+}
+
+.btn{
+padding:14px 28px;
+border-radius:999px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.primary{
+background:white;
+color:black;
+}
+
+.secondary{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+color:white;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 </style>
 </head>
+
 <body>
 
 <div class="stars"></div>
+<div class="glow"></div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Status</a>
+<a href="#">Contact</a>
+</nav>
 
 <div class="hero">
-    <h1>HOSPITAL SPOOFER</h1>
-    <p>Modern futuristic landing page.</p>
-    <button>Get Started</button>
+<h1>HOSPITAL SPOOFER</h1>
+<p>Advanced • Modern • Clean</p>
+
+<div class="buttons">
+<a class="btn primary" href="#">Get Started</a>
+<a class="btn secondary" href="#">Discord</a>
+</div>
 </div>
 
 </body>

@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hospital Spoofer</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+<style>
 *{
 margin:0;
 padding:0;
@@ -16,38 +16,55 @@ font-family:'Inter',sans-serif;
 }
 
 body{
+height:100vh;
+overflow:hidden;
 background:#050505;
 color:white;
-overflow:hidden;
-height:100vh;
+}
+
+.background{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 50% 30%, rgba(138,43,226,.35), transparent 35%),
+linear-gradient(to bottom,#090909,#000000);
+z-index:-3;
 }
 
 .stars{
 position:fixed;
-width:100%;
-height:100%;
+inset:0;
 background-image:
-radial-gradient(white 1px, transparent 1px);
-background-size:50px 50px;
-opacity:.15;
-animation: drift 60s linear infinite;
+radial-gradient(#b56cff 1px, transparent 1px);
+background-size:40px 40px;
+opacity:.35;
+animation:moveStars 35s linear infinite;
+z-index:-2;
 }
 
-@keyframes drift{
-from{transform:translateY(0);}
-to{transform:translateY(-50px);}
+.stars2{
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(#7e22ce 1px, transparent 1px);
+background-size:80px 80px;
+opacity:.2;
+animation:moveStars 70s linear infinite reverse;
+z-index:-2;
 }
 
 .glow{
 position:absolute;
-width:500px;
-height:500px;
-background:white;
-filter:blur(180px);
-opacity:.08;
+width:700px;
+height:700px;
+background:#8a2be2;
+border-radius:50%;
+filter:blur(220px);
+opacity:.2;
 left:50%;
 top:40%;
 transform:translate(-50%,-50%);
+animation:pulse 6s ease-in-out infinite;
 }
 
 nav{
@@ -55,24 +72,23 @@ position:fixed;
 top:25px;
 left:50%;
 transform:translateX(-50%);
-padding:12px 24px;
+padding:14px 24px;
+border-radius:999px;
 background:rgba(255,255,255,.04);
 backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,.08);
-border-radius:999px;
+border:1px solid rgba(168,85,247,.2);
 display:flex;
 gap:25px;
-z-index:10;
 }
 
 nav a{
-color:#bbb;
 text-decoration:none;
+color:#cfcfcf;
 transition:.3s;
 }
 
 nav a:hover{
-color:white;
+color:#b56cff;
 }
 
 .hero{
@@ -82,32 +98,46 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-position:relative;
-z-index:2;
-animation: fadeUp 1s ease;
+padding:20px;
+}
+
+.badge{
+padding:8px 16px;
+border-radius:999px;
+background:rgba(168,85,247,.1);
+border:1px solid rgba(168,85,247,.25);
+color:#c084fc;
+margin-bottom:20px;
 }
 
 h1{
-font-size:clamp(3rem,10vw,7rem);
+font-size:clamp(4rem,10vw,8rem);
 font-weight:800;
 letter-spacing:4px;
-text-shadow:0 0 40px rgba(255,255,255,.25);
+line-height:.95;
+text-shadow:
+0 0 20px rgba(181,108,255,.7),
+0 0 60px rgba(181,108,255,.4);
+animation:floatText 5s ease-in-out infinite;
 }
 
-p{
-margin-top:20px;
-color:#9f9f9f;
+.subtitle{
+margin-top:25px;
 font-size:1.1rem;
+color:#a0a0a0;
+max-width:650px;
 }
 
 .buttons{
-margin-top:35px;
+margin-top:40px;
 display:flex;
 gap:15px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 .btn{
-padding:14px 28px;
+padding:15px 30px;
 border-radius:999px;
 text-decoration:none;
 font-weight:600;
@@ -115,8 +145,14 @@ transition:.3s;
 }
 
 .primary{
-background:white;
-color:black;
+background:#9333ea;
+color:white;
+box-shadow:0 0 25px rgba(147,51,234,.5);
+}
+
+.primary:hover{
+transform:translateY(-3px);
+box-shadow:0 0 45px rgba(147,51,234,.9);
 }
 
 .secondary{
@@ -125,18 +161,35 @@ border:1px solid rgba(255,255,255,.1);
 color:white;
 }
 
-.btn:hover{
+.secondary:hover{
 transform:translateY(-3px);
+border-color:#9333ea;
 }
 
-@keyframes fadeUp{
+@keyframes moveStars{
 from{
-opacity:0;
-transform:translateY(30px);
+transform:translateY(0);
 }
 to{
-opacity:1;
+transform:translateY(-100px);
+}
+}
+
+@keyframes pulse{
+0%,100%{
+transform:translate(-50%,-50%) scale(1);
+}
+50%{
+transform:translate(-50%,-50%) scale(1.15);
+}
+}
+
+@keyframes floatText{
+0%,100%{
 transform:translateY(0);
+}
+50%{
+transform:translateY(-8px);
 }
 }
 </style>
@@ -144,24 +197,39 @@ transform:translateY(0);
 
 <body>
 
+<div class="background"></div>
 <div class="stars"></div>
+<div class="stars2"></div>
 <div class="glow"></div>
 
 <nav>
 <a href="#">Home</a>
-<a href="#">About</a>
+<a href="#">Features</a>
 <a href="#">Status</a>
 <a href="#">Contact</a>
 </nav>
 
 <div class="hero">
-<h1>HOSPITAL SPOOFER</h1>
-<p>Advanced • Modern • Clean</p>
+
+<div class="badge">
+● ONLINE
+</div>
+
+<h1>
+HOSPITAL<br>
+SPOOFER
+</h1>
+
+<p class="subtitle">
+Modern. Clean. Premium.
+Built with a futuristic purple aesthetic and smooth animations.
+</p>
 
 <div class="buttons">
-<a class="btn primary" href="#">Get Started</a>
-<a class="btn secondary" href="#">Discord</a>
+<a href="#" class="btn primary">Get Started</a>
+<a href="#" class="btn secondary">Discord</a>
 </div>
+
 </div>
 
 </body>

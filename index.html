@@ -16,12 +16,12 @@ font-family:'Inter',sans-serif;
 }
 
 body{
-height:100vh;
-overflow:hidden;
 background:#050505;
 color:white;
+overflow-x:hidden;
 }
 
+/* BACKGROUND */
 .background{
 position:fixed;
 inset:0;
@@ -34,8 +34,7 @@ z-index:-3;
 .stars{
 position:fixed;
 inset:0;
-background-image:
-radial-gradient(#b56cff 1px, transparent 1px);
+background-image:radial-gradient(#b56cff 1px, transparent 1px);
 background-size:40px 40px;
 opacity:.35;
 animation:moveStars 35s linear infinite;
@@ -45,8 +44,7 @@ z-index:-2;
 .stars2{
 position:fixed;
 inset:0;
-background-image:
-radial-gradient(#7e22ce 1px, transparent 1px);
+background-image:radial-gradient(#7e22ce 1px, transparent 1px);
 background-size:80px 80px;
 opacity:.2;
 animation:moveStars 70s linear infinite reverse;
@@ -67,6 +65,7 @@ transform:translate(-50%,-50%);
 animation:pulse 6s ease-in-out infinite;
 }
 
+/* NAV */
 nav{
 position:fixed;
 top:25px;
@@ -79,6 +78,7 @@ backdrop-filter:blur(12px);
 border:1px solid rgba(168,85,247,.2);
 display:flex;
 gap:25px;
+z-index:10;
 }
 
 nav a{
@@ -91,6 +91,7 @@ nav a:hover{
 color:#b56cff;
 }
 
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -111,13 +112,11 @@ margin-bottom:20px;
 }
 
 h1{
-font-size:clamp(4rem,10vw,8rem);
+font-size:clamp(3rem,8vw,7rem);
 font-weight:800;
 letter-spacing:4px;
 line-height:.95;
-text-shadow:
-0 0 20px rgba(181,108,255,.7),
-0 0 60px rgba(181,108,255,.4);
+text-shadow:0 0 20px rgba(181,108,255,.7);
 animation:floatText 5s ease-in-out infinite;
 }
 
@@ -166,31 +165,71 @@ transform:translateY(-3px);
 border-color:#9333ea;
 }
 
+/* SHOP */
+.shop{
+padding:120px 20px;
+text-align:center;
+}
+
+.shop h2{
+font-size:3rem;
+margin-bottom:40px;
+}
+
+.product-grid{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.product-card{
+width:260px;
+padding:20px;
+border-radius:16px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(10px);
+text-align:left;
+transition:.3s;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+border-color:#9333ea;
+box-shadow:0 0 30px rgba(147,51,234,.3);
+}
+
+.product-card h3{
+margin-bottom:10px;
+}
+
+.product-card p{
+color:#aaa;
+font-size:.9rem;
+}
+
+.price{
+display:block;
+margin:12px 0;
+color:#b56cff;
+font-weight:bold;
+}
+
+/* ANIMATIONS */
 @keyframes moveStars{
-from{
-transform:translateY(0);
-}
-to{
-transform:translateY(-100px);
-}
+from{transform:translateY(0);}
+to{transform:translateY(-100px);}
 }
 
 @keyframes pulse{
-0%,100%{
-transform:translate(-50%,-50%) scale(1);
-}
-50%{
-transform:translate(-50%,-50%) scale(1.15);
-}
+0%,100%{transform:translate(-50%,-50%) scale(1);}
+50%{transform:translate(-50%,-50%) scale(1.15);}
 }
 
 @keyframes floatText{
-0%,100%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-8px);
-}
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
 }
 </style>
 </head>
@@ -203,34 +242,62 @@ transform:translateY(-8px);
 <div class="glow"></div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Features</a>
-<a href="#">Status</a>
-<a href="#">Contact</a>
+<a href="#home">Home</a>
+<a href="#shop">Shop</a>
+<a href="#status">Status</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<div class="hero">
+<!-- HERO -->
+<section class="hero" id="home">
 
-<div class="badge">
-● ONLINE
-</div>
+<div class="badge">● ONLINE</div>
 
-<h1>
-HOSPITAL<br>
-SPOOFER
-</h1>
+<h1>HOSPITAL<br>SPOOFER</h1>
 
 <p class="subtitle">
 Modern. Clean. Premium.
-Built with a futuristic purple aesthetic and smooth animations.
+Built with a futuristic neon aesthetic and smooth animations.
 </p>
 
 <div class="buttons">
-<a href="#" class="btn primary">Get Started</a>
+<a href="#shop" class="btn primary">View Shop</a>
 <a href="#" class="btn secondary">Discord</a>
 </div>
 
+</section>
+
+<!-- SHOP -->
+<section class="shop" id="shop">
+
+<h2>Shop</h2>
+
+<div class="product-grid">
+
+<div class="product-card">
+<h3>Basic Package</h3>
+<p>Entry-level access with core features.</p>
+<span class="price">$10</span>
+<a href="https://paypal.me/yourlink" class="btn primary">Buy Now</a>
 </div>
+
+<div class="product-card">
+<h3>Premium Package</h3>
+<p>Full access with all advanced features.</p>
+<span class="price">$20</span>
+<a href="https://paypal.me/yourlink" class="btn primary">Buy Now</a>
+</div>
+
+<div class="product-card">
+<h3>Lifetime Package</h3>
+<p>One-time purchase, permanent access.</p>
+<span class="price">$50</span>
+<a href="https://paypal.me/yourlink" class="btn primary">Buy Now</a>
+</div>
+
+</div>
+
+</section>
 
 </body>
 </html>
